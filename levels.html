@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess and Win</title>
+    </head>
+    <link rel="stylesheet" href="bg.css">
+    <style>
+        .levels{
+            border:3px solid white;
+            margin:auto;
+            padding: 1em;
+            border-radius: 4px;
+            width: 50%;
+            margin-top: 30vh;
+            position:absolute;
+            margin-left: 30vh;
+        }
+        .one, .two, .three{
+            border:2px solid white;
+            border-radius: 0px 8px;
+            margin:0.5em auto;
+            padding:1em;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+            font-size: large;
+            background-color: white;
+        }
+        @media only screen and (max-width:1080px) and (min-width:720px){
+            .levels{
+            padding: 1.2em;
+            margin-top: 30vh;
+            margin-left: 20vh;
+        }
+    }
+        @media only screen and (max-width:720px) and (min-width:480px){
+            .levels{
+            padding: 1.6em;
+            margin-top: 30vh;
+            margin-left: 10vh;
+        }
+        }
+        @media only screen and (max-width:480px) and (min-width:240px){
+            .levels{
+            padding: 2em;
+            margin-top: 30vh;
+            margin-left: 10vh;
+            }
+        }
+        a{
+            text-decoration: none;
+            color:black;
+        }
+        a:hover{
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <section class="levels">
+        <a href="easy.html"><div class="one">Easy</div></a>
+        <a href="medium.html"><div class ="two">Medium</div></a>
+        <a href="difficult.html"><div class="three">Hard</div></a>
+    </section>
+    <canvas id="canvas"></canvas>
+    <script src="bg.js"></script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      background-color: aqua;
+    }
+
+    .guess-game {
+      width: 580px;
+      height: 480px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      perspective: 1000px;
+    }
+
+    .game-card {
+      width: calc(15% - 5px);
+      height: calc(33.33% -10px);
+      margin: 5px;
+      position: relative;
+      background: #1c7ccc;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+
+    .face {
+      width: 100%;
+      height: 100%;
+      padding: 5px;
+      position: absolute;
+      border-radius: 5px;
+      visibility: hidden;
+    }
+
+    .inp-div {
+      position: absolute;
+      top:90%;
+      bottom:2px;
+      right: 100px;
+    }
+
+    button {
+      width: 100px;
+      height: 40px;
+      background-color: black;
+      color: white;
+    }
+
+    input {
+      width: 200px;
+      height: 40px;
+    }
+
+    #back {
+      top: 2px;
+      float: right;
+      position: absolute;
+      right: 2px;
+    }
+
+    #home {
+      top: 2px;
+      position: absolute;
+      left: 2px;
+    }
+
+    #rule {
+      position: absolute;
+      top: 5px;
+      right: 125px;
+      font-size: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    @media only screen and (min-width:400px) and (max-width: 750px) {
+      .guess-game {
+        width: 340px;
+        height: 240px;
+      }
+
+      .game-card {
+        margin: 3px;
+      }
+
+      .face {
+        padding: 5px;
+      }
+
+      .inp-div {
+        top:85%;
+        bottom: 100px;
+        right: 100px;
+      }
+
+      button {
+        width: 60px;
+        height: 20px;
+      }
+
+      input {
+        width: 120px;
+        height: 20px;
+        padding: 2px;
+      }
+
+      #back {
+        top: 2px;
+        right: 2px;
+      }
+
+      #home {
+        top: 2px;
+        left: 2px;
+      }
+
+      #rule {
+        top: 5px;
+        right: 85px;
+        font-size: 14px;
+      }
+      .mod{
+        background-color: black;
+      }
+    }
+
+    @media only screen and (min-width:240px) and (max-width: 400px) {
+      .guess-game {
+        width: 200px;
+        height: 140px;
+      }
+
+      .game-card {
+        margin: 3px;
+      }
+
+      .face {
+        padding: 5px;
+      }
+
+      .inp-div {
+        top:75%;
+        bottom: 100px;
+        right: 100px;
+      }
+
+      button {
+        width: 60px;
+        height: 20px;
+      }
+
+      input {
+        width: 120px;
+        height: 20px;
+        padding: 2px;
+      }
+
+      #back {
+        top: 2px;
+        right: 2px;
+      }
+
+      #home {
+        top: 2px;
+        left: 2px;
+      }
+
+      #rule {
+        top: 5px;
+        right: 85px;
+        font-size: 14px;
+      }
+      .mod{
+      width: 100px;
+      height: 40px;
+      }
+    }
+    .row{
+      position: absolute;
+      margin-left:45vh;
+      top:8vh;
+    }
+    #row{
+      padding:5px 15px;
+      background-color: black;
+      color:white;
+      margin-top:8vh;
+    }
+    .column{
+      top: 5vh;
+      left: 30%;
+      position :absolute;
+      display:flex;
+    }
+    #column{
+      padding:5px 15px;
+      background-color: black;
+      color:white;
+      margin-right:9vh;
+    }
+    @media only screen and (max-width:1180px){
+      .row{
+        visibility: hidden;
+      }
+      .column{
+        visibility: hidden;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="home.html"><button id="home">Home</button></a>
+  <a href="levels.html"><button id="back">Back</button></a>
+  <a href="rules.html">
+    <p id="rule">How to play?</p>
+  </a>
+  <div class="row">
+    <div id="row">A</div>
+    <div id="row">B</div>
+    <div id="row">C</div>
+    <div id="row">D</div>
+    <div id="row">E</div>
+    <div id="row">F</div>
+  </div>
+      <div class="column">
+      <div id="column">1</div>
+      <div id="column">2</div>
+      <div id="column">3</div>
+      <div id="column">4</div>
+      <div id="column">5</div>
+      <div id="column">6</div>
+    </div>
+  <section class="guess-game">
+    <div class="game-card">
+      <img class="face" id="1" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="2" src="Bomb-clipart-download.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="3" src="gift.jpg">
+    </div>
+    <div class="game-card">
+      <img class="face" id="4" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="5" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="6" src="gift.jpg">
+    </div>
+    <div class="game-card">
+      <img class="face" id="7" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="8" src="gift.jpg">
+    </div>
+    <div class="game-card">
+      <img class="face" id="9" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="10" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="11" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="12" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="13" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="14" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="15" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="16" src="miss.png">
+    </div>
+    </div>
+    <div class="game-card">
+      <img class="face" id="17" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="18" src="gift.jpg">
+    </div>
+    <div class="game-card">
+      <img class="face" id="19" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="20" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="21" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="22" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="23" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="24" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="25" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="26" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="27" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="28" src="gift.jpg">
+    </div>
+    <div class="game-card">
+      <img class="face" id="29" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="30" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="31" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="32" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="33" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="34" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="35" src="miss.png">
+    </div>
+    <div class="game-card">
+      <img class="face" id="36" src="miss.png">
+    </div>
+  </section>
+  <div class="inp-div">
+    <input id="inp1" type="text" name="inp" onchange="abc()" />
+    <button id="btn" onclick="subFunc()">Guess</button>
+  </div>
+  <div class="modal fade" id="winModal" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Game Over</h1>
+          <div class="modal-body">
+            <h1 id="win"></h1>
+            <p>Would you like to play again?</p>
+          </div>
+          <div class="modal-footer">
+            <a href="home.html"><button class="mod" type ="submit" >Home</button></a>             
+            <button type="button" onclick="reloadGame()" class="btn btn-danger btn-lg" data-dismiss="modal">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="difficult.js"></script>
+</body>
+
+</html>

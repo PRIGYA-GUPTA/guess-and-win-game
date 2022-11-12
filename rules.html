@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess and Win</title>
+    <link rel="stylesheet" href="bg.css">
+    <style>
+        .box {
+            background-color: rgba(0, 0, 0, 0.63);
+            width: calc(70% - 5px);
+            margin: 18vh 40vh 20vh 25vh;
+            position: absolute;
+        }
+
+        .list {
+            margin: auto;
+            padding: 2em;
+            font-size: medium;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: whitesmoke;
+        }
+
+        .back {
+            border-radius: 100%;
+            padding: 10px;
+            position: absolute;
+            margin-top: 5vh;
+            margin-left: 90%;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .head{
+            font-size:30px; padding-top:2em; padding-left:1em; font-weight: bold; color: whitesmoke;
+        }
+
+        @media only screen and (min-width:750px) and (max-width:1040px) {
+            .box {
+                background-color: rgba(0, 0, 0, 0.63);
+                margin-left: 20vh;
+                position: absolute;
+            }
+            .list{
+                font-size: 16px;
+            }
+            .back{
+                margin-top: 5vh;
+                margin-left: 90%;
+                padding:8px;
+                font-size: 14px;
+            }
+            .head{
+                font-size:25px;
+            }
+        }
+        @media only screen and (min-width:480px) and (max-width:749px) {
+            .box {
+                background-color: rgba(0, 0, 0, 0.63);
+                margin-left: 10vh;
+                position: absolute;
+            }
+            .list{
+                font-size: 14px;
+            }
+            .back{
+                margin-top: 5vh;
+                margin-left: 90%;
+                padding:6px;
+                font-size: 12px;
+            }
+            .head{
+                font-size:20px;
+            }
+        }
+        @media only screen and (min-width:480px) and (max-width:749px) {
+            .box {
+                background-color: rgba(0, 0, 0, 0.63);
+                margin: 18vh 40vh 20vh 10vh;
+                position: absolute;
+            }
+            .list{
+                font-size: 12px;
+            }
+            .back{
+                margin-top: 5vh;
+                margin-left: 85%;
+                padding:4px;
+                font-size: 10px;
+            }
+            .head{
+                font-size:15px;
+            }
+        }
+        @media only screen and (min-width:240px) and (max-width:480px) {
+            .box {
+                background-color: rgba(0, 0, 0, 0.63);
+                margin: 18vh 9vh;
+                position: absolute;
+            }
+            .list{
+                font-size: 10px;
+            }
+            .back{
+                margin-top: 5vh;
+                margin-left: 80%;
+                padding: 2px;
+                font-size: 8px;
+            }
+            .head{
+                font-size:10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p class="head">Rules:-</p>
+        <ul class="list">
+            <li>Gifts are hidden at random by the computer on the grid.</li>
+            <li>The game has three levels: Easy(3x3 grid) , Medium(4x4 grid) and Difficult(6x6 grid)</li>
+            <li>The game will prompt for a guess</li>
+            <li>You have to entr the row and column no in the input box . for example if you think the gift is in 1st
+                row and 1st column type "A1" ans similary for others. </li>
+            <li>Submit your guess</li>
+            <li>If it is a gift find all other as well.</li>
+            <li>If it is a miss then you need to go for next guess</li>
+            <li>And the game is over as you come on a danger symbol or make run out of moves.</li>
+        </ul>
+    </div>
+    <a href="home.html"><button class="back">Back</button></a>
+    <canvas id="canvas"></canvas>
+    <script src="bg.js"></script>
+</body>
+
+</html>
